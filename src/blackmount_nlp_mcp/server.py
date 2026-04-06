@@ -6,7 +6,7 @@ from . import clean, detect, keywords, readability, sentiment, similarity, summa
 
 mcp = FastMCP(
     "Blackmount NLP",
-    description=(
+    instructions=(
         "Text analysis and NLP without the bloat. "
         "No NLTK, no spaCy, no transformers — pure Python + regex. "
         "Fast, lightweight, surprisingly powerful."
