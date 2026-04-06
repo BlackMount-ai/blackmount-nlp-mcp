@@ -1,29 +1,37 @@
 # blackmount-nlp-mcp
 
-NLP without the bloat — no NLTK, no spaCy, no transformers, just results.
+[![PyPI version](https://img.shields.io/pypi/v/blackmount-nlp-mcp)](https://pypi.org/project/blackmount-nlp-mcp/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 
-A Model Context Protocol (MCP) server providing 40+ text analysis tools built with pure Python and regex. Fast, lightweight, surprisingly powerful.
+**NLP for MCP — zero heavy dependencies.**
 
-## Zero Heavy Dependencies
+45 text analysis tools delivered as a FastMCP server. No NLTK. No spaCy. No transformers. One dependency (`mcp[cli]`), under 1 MB installed, ready in seconds.
 
-This package has **one dependency**: `mcp[cli]` for the MCP server protocol. Everything else is pure Python:
+---
 
-- No NLTK (60MB+ download)
-- No spaCy (200MB+ models)
-- No transformers (2GB+ models)
-- No numpy, no scikit-learn
-- Built-in 2000+ word sentiment lexicon
-- Built-in 500+ stopword list
-- Porter stemmer from scratch
-- TF-IDF from scratch
+## Why this exists
 
-## Install
+| | blackmount-nlp-mcp | NLTK | spaCy | transformers |
+|---|---|---|---|---|
+| **Install size** | < 1 MB | 60 MB+ | 200 MB+ | 2 GB+ |
+| **Dependencies** | 1 | many | many | many |
+| **Tokenization** | ✅ | ✅ | ✅ | ✅ |
+| **Sentiment analysis** | ✅ | ✅ | ❌ | ✅ |
+| **Readability scores** | ✅ | ❌ | ❌ | ❌ |
+| **Keyword extraction** | ✅ | ✅ | ❌ | ❌ |
+| **Text similarity** | ✅ | ✅ | ✅ | ✅ |
+| **Language detection** | ✅ (20 langs) | ❌ | ❌ | ❌ |
+
+Everything is implemented from scratch in pure Python — Porter stemmer, TF-IDF, RAKE, Levenshtein, VADER-style sentiment, Flesch / Gunning Fog / Coleman-Liau / ARI / SMOG readability, extractive summarization, language detection — plus a built-in 2000+ word sentiment lexicon and 500+ stopword list, all baked into the package.
+
+---
+
+## Quick start
 
 ```bash
 pip install blackmount-nlp-mcp
 ```
-
-## MCP Configuration
 
 Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`):
 
@@ -37,63 +45,102 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
 }
 ```
 
-## 40+ Tools
+Restart Claude Desktop. All 45 NLP tools are now available.
 
-### Tokenization
-- `word_tokenize` — split text into words (handles contractions, punctuation)
-- `sentence_tokenize` — split into sentences (handles abbreviations)
-- `generate_ngrams` — n-grams from token lists
-- `generate_char_ngrams` — character-level n-grams
+---
 
-### Readability Scores
-- `flesch_reading_ease` — 0-100 ease score
-- `flesch_kincaid_grade` — US grade level
-- `gunning_fog_index` — Fog index
-- `coleman_liau_index` — Coleman-Liau index
-- `automated_readability_index` — ARI
-- `smog_grade_index` — SMOG (best for healthcare texts)
-- `count_syllables` — syllable estimation
-- `get_reading_level` — comprehensive summary with all scores
+## Tool catalog
 
-### Sentiment Analysis (VADER-style)
-- `get_sentiment_score` — compound score -1 to +1
-- `get_sentiment_label` — positive / negative / neutral
-- `get_sentence_sentiments` — per-sentence breakdown
-- `get_aspect_sentiment` — sentiment around specific topics
+### Tokenization (4 tools)
 
-### Keyword Extraction
-- `extract_tfidf_keywords` — TF-IDF from scratch
-- `extract_rake_keywords` — RAKE algorithm
-- `get_word_frequency` — top words (excluding stopwords)
-- `get_phrase_frequency` — top n-gram phrases
+| Tool | Description |
+|------|-------------|
+| `word_tokenize` | Split text into words, handling contractions and punctuation |
+| `sentence_tokenize` | Split into sentences, handling common abbreviations |
+| `generate_ngrams` | Generate word-level n-grams from a token list |
+| `generate_char_ngrams` | Generate character-level n-grams |
 
-### Text Similarity
-- `get_jaccard_similarity` — word set overlap
-- `get_cosine_similarity` — bag-of-words cosine
-- `get_edit_distance` — Levenshtein distance
-- `get_normalized_edit_distance` — 0-1 scale
-- `get_longest_common_subsequence` — LCS length
+### Readability (8 tools)
 
-### Text Cleaning
-- `clean_remove_stopwords` — remove 500+ English stopwords
-- `clean_remove_punctuation` / `clean_remove_numbers`
-- `clean_remove_urls` / `clean_remove_emails` / `clean_remove_html`
-- `clean_normalize_whitespace` / `clean_lowercase`
-- `porter_stem` — Porter stemmer from scratch
-- `clean_text_pipeline` — configurable multi-step cleaning
+| Tool | Description |
+|------|-------------|
+| `flesch_reading_ease` | 0–100 ease score (higher = easier) |
+| `flesch_kincaid_grade` | US grade level estimate |
+| `gunning_fog_index` | Fog index based on complex word ratio |
+| `coleman_liau_index` | Coleman-Liau grade-level index |
+| `automated_readability_index` | ARI grade-level index |
+| `smog_grade_index` | SMOG grade (recommended for healthcare text) |
+| `count_syllables` | Syllable count estimation for any word |
+| `get_reading_level` | All readability scores in one call with a plain-English label |
 
-### Language & Content Detection
-- `detect_text_language` — 20 languages by word frequency heuristic
-- `detect_text_encoding_type` — ASCII, Latin, Cyrillic, CJK, Arabic, etc.
-- `check_is_english` — confidence score 0-1
-- `count_words` / `count_sentences` / `count_paragraphs`
-- `get_avg_word_length` / `get_avg_sentence_length`
+### Sentiment Analysis (4 tools)
 
-### Summarization & Statistics
-- `get_extractive_summary` — pick best N sentences by scoring
-- `get_text_statistics` — comprehensive stats (words, readability, language, reading time)
+| Tool | Description |
+|------|-------------|
+| `get_sentiment_score` | Compound sentiment score from −1.0 (negative) to +1.0 (positive) |
+| `get_sentiment_label` | Returns `positive`, `negative`, or `neutral` |
+| `get_sentence_sentiments` | Per-sentence sentiment breakdown |
+| `get_aspect_sentiment` | Sentiment score scoped to specific topics or keywords |
 
-## Use as a Library
+### Keyword Extraction (4 tools)
+
+| Tool | Description |
+|------|-------------|
+| `extract_tfidf_keywords` | TF-IDF keyword ranking across a corpus |
+| `extract_rake_keywords` | RAKE algorithm — phrase-level keyword extraction |
+| `get_word_frequency` | Top words by frequency, stopwords excluded |
+| `get_phrase_frequency` | Top n-gram phrases by frequency |
+
+### Text Similarity (5 tools)
+
+| Tool | Description |
+|------|-------------|
+| `get_jaccard_similarity` | Word-set overlap, 0–1 |
+| `get_cosine_similarity` | Bag-of-words cosine similarity, 0–1 |
+| `get_edit_distance` | Levenshtein edit distance |
+| `get_normalized_edit_distance` | Edit distance normalized to 0–1 |
+| `get_longest_common_subsequence` | LCS length between two strings |
+
+### Text Cleaning (10 tools)
+
+| Tool | Description |
+|------|-------------|
+| `clean_remove_stopwords` | Strip 500+ English stopwords |
+| `clean_remove_punctuation` | Remove all punctuation |
+| `clean_remove_numbers` | Remove numeric tokens |
+| `clean_remove_urls` | Strip URLs |
+| `clean_remove_emails` | Strip email addresses |
+| `clean_remove_html` | Strip HTML tags |
+| `clean_normalize_whitespace` | Collapse and trim whitespace |
+| `clean_lowercase` | Lowercase the text |
+| `porter_stem` | Porter stemmer (pure Python, no NLTK) |
+| `clean_text_pipeline` | Configurable multi-step cleaning in one call |
+
+### Detection (8 tools)
+
+| Tool | Description |
+|------|-------------|
+| `detect_text_language` | Identify language from 20 supported languages |
+| `detect_text_encoding_type` | Detect script type: ASCII, Latin, Cyrillic, CJK, Arabic, etc. |
+| `check_is_english` | English confidence score, 0–1 |
+| `count_words` | Word count |
+| `count_sentences` | Sentence count |
+| `count_paragraphs` | Paragraph count |
+| `get_avg_word_length` | Mean word length in characters |
+| `get_avg_sentence_length` | Mean sentence length in words |
+
+### Summarization (2 tools)
+
+| Tool | Description |
+|------|-------------|
+| `get_extractive_summary` | Select the N highest-scoring sentences from a document |
+| `get_text_statistics` | Full document stats: word count, readability, language, reading time |
+
+---
+
+## Use as a library
+
+The submodules are importable directly — no MCP server required:
 
 ```python
 from blackmount_nlp_mcp.sentiment import sentiment_score, sentiment_label
@@ -108,6 +155,8 @@ print(reading_level(text))     # {"grade_level": 5.2, "label": "elementary", ...
 print(rake_keywords(text))     # [{"phrase": "product", "score": 1.0}, ...]
 ```
 
+---
+
 ## Development
 
 ```bash
@@ -116,6 +165,16 @@ cd blackmount-nlp-mcp
 pip install -e ".[dev]"
 pytest tests/ -v
 ```
+
+---
+
+## Blackmount ecosystem
+
+blackmount-nlp-mcp is part of the [Blackmount](https://blackmount.ai) ecosystem.
+
+Also check out **[blackmount-mcp](https://github.com/blackmount/blackmount-mcp)** — browser memory, AI chat search, and session analytics as an MCP server. Different audience, same zero-bloat philosophy.
+
+---
 
 ## License
 

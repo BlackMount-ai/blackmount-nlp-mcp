@@ -12,9 +12,9 @@ requires-python = ">=3.10"
 authors = [
     {name = "Mehrdad Shirangi"},
 ]
-keywords = ["mcp", "nlp", "text-analysis", "sentiment", "readability", "keywords"]
+keywords = ["mcp", "nlp", "text-analysis", "sentiment", "readability", "tokenization", "keywords", "blackmount", "zero-dependencies"]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
@@ -27,6 +27,11 @@ classifiers = [
 dependencies = [
     "mcp[cli]>=1.0.0",
 ]
+
+[project.urls]
+Homepage = "https://blackmount.ai"
+Repository = "https://github.com/blackmount/blackmount-nlp-mcp"
+Issues = "https://github.com/blackmount/blackmount-nlp-mcp/issues"
 
 [project.scripts]
 blackmount-nlp-mcp = "blackmount_nlp_mcp.server:main"
