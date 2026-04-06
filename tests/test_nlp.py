@@ -459,3 +459,20 @@ class TestSummarize:
         stats = text_statistics("")
         assert stats["words"] == 0
         assert stats["sentences"] == 0
+
+
+class TestServer:
+    """Smoke tests for the MCP server tool registration."""
+
+    def test_server_registers_all_tools(self):
+        import asyncio
+        from blackmount_nlp_mcp.server import mcp as server
+        tools = asyncio.run(server.list_tools())
+        assert len(tools) >= 40, f"Expected 40+ tools, got {len(tools)}"
+
+    def test_all_tools_have_descriptions(self):
+        import asyncio
+        from blackmount_nlp_mcp.server import mcp as server
+        tools = asyncio.run(server.list_tools())
+        for tool in tools:
+            assert tool.description, f"Tool {tool.name} missing description"
