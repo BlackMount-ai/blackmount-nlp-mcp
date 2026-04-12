@@ -468,7 +468,7 @@ class TestServer:
         import asyncio
         from blackmount_nlp_mcp.server import mcp as server
         tools = asyncio.run(server.list_tools())
-        assert len(tools) >= 40, f"Expected 40+ tools, got {len(tools)}"
+        assert len(tools) == 45, f"Expected 45 tools, got {len(tools)}"
 
     def test_all_tools_have_descriptions(self):
         import asyncio
