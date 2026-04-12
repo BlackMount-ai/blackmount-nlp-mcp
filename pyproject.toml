@@ -30,11 +30,18 @@ dependencies = [
 
 [project.urls]
 Homepage = "https://blackmount.ai"
-Repository = "https://github.com/blackmount/blackmount-nlp-mcp"
-Issues = "https://github.com/blackmount/blackmount-nlp-mcp/issues"
+Repository = "https://github.com/BlackMount-ai/blackmount-nlp-mcp"
+Issues = "https://github.com/BlackMount-ai/blackmount-nlp-mcp/issues"
 
 [project.scripts]
 blackmount-nlp-mcp = "blackmount_nlp_mcp.server:main"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "CROSS_REPO_TASKS.md",
+    "CLAUDE.md",
+    ".github/",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/blackmount_nlp_mcp"]

@@ -6,7 +6,7 @@
 
 **NLP for MCP — zero heavy dependencies.**
 
-45 text analysis tools delivered as a FastMCP server. No NLTK. No spaCy. No transformers. One dependency (`mcp[cli]`), under 1 MB installed, ready in seconds.
+45 text analysis tools delivered as a FastMCP server. No NLTK. No spaCy. No transformers. One dependency (`mcp[cli]`), under 50 KB of NLP code, ready in seconds.
 
 ---
 
@@ -14,7 +14,7 @@
 
 | | blackmount-nlp-mcp | NLTK | spaCy | transformers |
 |---|---|---|---|---|
-| **Install size** | < 1 MB | 60 MB+ | 200 MB+ | 2 GB+ |
+| **Package size** | 42 KB | 60 MB+ | 200 MB+ | 2 GB+ |
 | **Dependencies** | 1 | many | many | many |
 | **Tokenization** | ✅ | ✅ | ✅ | ✅ |
 | **Sentiment analysis** | ✅ | ✅ | ❌ | ✅ |
@@ -160,9 +160,9 @@ print(rake_keywords(text))     # [{"phrase": "product", "score": 1.0}, ...]
 ## Development
 
 ```bash
-git clone https://github.com/blackmount/blackmount-nlp-mcp
+git clone https://github.com/BlackMount-ai/blackmount-nlp-mcp
 cd blackmount-nlp-mcp
-pip install -e ".[dev]"
+pip install -e .
 pytest tests/ -v
 ```
 
@@ -172,7 +172,7 @@ pytest tests/ -v
 
 blackmount-nlp-mcp is part of the [Blackmount](https://blackmount.ai) ecosystem.
 
-Also check out **[blackmount-mcp](https://github.com/blackmount/blackmount-mcp)** — browser memory, AI chat search, and session analytics as an MCP server. Different audience, same zero-bloat philosophy.
+Also check out **[blackmount-mcp](https://github.com/BlackMount-ai/blackmount-mcp)** — browser memory, AI chat search, and session analytics as an MCP server. Different audience, same zero-bloat philosophy.
 
 ---
 
