@@ -14,7 +14,7 @@
 
 | | blackmount-nlp-mcp | NLTK | spaCy | transformers |
 |---|---|---|---|---|
-| **Wheel size** | 42 KB | 1.5 MB+ | 8 MB+ (+ models) | 400 KB+ (+ models) |
+| **Wheel size** | 42 KB | 1.5 MB | 6 MB+ (+ models) | 10 MB+ (+ models) |
 | **Direct dependencies** | 1 | many | many | many |
 | **Tokenization** | ✅ | ✅ | ✅ | ✅ |
 | **Sentiment analysis** | ✅ | ✅ | ❌ | ✅ |
