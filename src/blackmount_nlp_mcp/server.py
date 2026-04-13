@@ -253,7 +253,7 @@ def clean_text_pipeline(text: str, steps: list[str] | None = None) -> str:
 
 @mcp.tool()
 def detect_text_language(text: str) -> list[dict]:
-    """Detect language from text. Returns top 5 matches with confidence scores. Supports 20 languages."""
+    """Detect language from text. Returns top 5 matches with confidence scores. Supports 18 languages."""
     return detect.detect_language(text)
 
 
