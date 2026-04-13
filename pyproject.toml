@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "blackmount-nlp-mcp"
-version = "0.1.1"
+version = "0.1.2"
 description = "Text analysis and NLP MCP server — no NLTK, no spaCy, just results"
 readme = "README.md"
 license = {text = "MIT"}
