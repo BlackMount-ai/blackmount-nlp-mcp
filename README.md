@@ -89,6 +89,8 @@ Restart your editor. All 45 NLP tools are now available — just ask in natural 
 
 ### Readability (8 tools)
 
+All readability functions return `0.0` for empty or whitespace-only input.
+
 | Tool | Description | Try asking |
 |------|-------------|------------|
 | `flesch_reading_ease` | 0–100 ease score (higher = easier) | "Calculate the Flesch Reading Ease score" |
