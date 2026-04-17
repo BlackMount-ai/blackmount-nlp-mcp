@@ -107,8 +107,8 @@ SENTIMENT_LEXICON: dict[str, float] = {
     "balanced": 1.6, "stable": 1.5, "steady": 1.4,
     "reliable": 2.0, "dependable": 2.0, "trustworthy": 2.3,
     "faithful": 2.1, "loyal": 2.2, "devoted": 2.3,
-    "dedicated": 2.1, "committed": 1.9, "determined": 1.8,
-    "resolute": 1.9, "persistent": 1.7, "tenacious": 1.8,
+    "dedicated": 2.1, "determined": 1.8,
+    "resolute": 1.9, "tenacious": 1.8,
     "resilient": 2.0, "strong": 1.8, "powerful": 1.9,
     "mighty": 2.0, "robust": 1.7, "sturdy": 1.5,
     "solid": 1.5, "firm": 1.3, "sound": 1.4,
@@ -134,7 +134,7 @@ SENTIMENT_LEXICON: dict[str, float] = {
     "transformative": 2.2, "visionary": 2.4, "forward-thinking": 2.1,
     "love": 3.0, "adore": 3.2, "cherish": 3.0,
     "treasure": 2.8, "worship": 2.5, "idolize": 2.3,
-    "appreciate": 2.2, "value": 1.8, "respect": 2.0,
+    "appreciate": 2.2, "value": 0.5, "respect": 2.0,
     "admire": 2.3, "esteem": 2.1, "revere": 2.5,
     "honor": 2.2, "praise": 2.3, "celebrate": 2.4,
     "commend": 2.1, "applaud": 2.2, "congratulate": 2.3,
@@ -181,8 +181,8 @@ SENTIMENT_LEXICON: dict[str, float] = {
     "rejuvenated": 2.0, "revitalized": 2.0, "revived": 1.8,
     "reborn": 2.0, "transformed": 1.8,
     "upgraded": 1.5, "enhanced": 1.6, "improved": 1.7,
-    "boosted": 1.5, "elevated": 1.6, "raised": 1.2,
-    "increased": 1.2, "expanded": 1.3, "extended": 1.1,
+    "boosted": 1.5, "elevated": 1.6,
+    "expanded": 1.3,
     "broadened": 1.2, "widened": 1.0, "deepened": 1.2,
     "enriched": 1.8, "empowered": 2.0, "enabled": 1.5,
     "liberated": 2.0, "freed": 1.8, "released": 1.3,
@@ -190,7 +190,7 @@ SENTIMENT_LEXICON: dict[str, float] = {
     "discovered": 1.8, "found": 1.2, "uncovered": 1.3,
     "revealed": 1.2, "exposed": 0.5, "illuminated": 1.8,
     "enlightened": 2.0, "educated": 1.5, "informed": 1.3,
-    "learned": 1.3, "studied": 1.0, "trained": 1.2,
+    "studied": 1.0, "trained": 1.2,
     "prepared": 1.2, "ready": 1.3, "equipped": 1.3,
     "armed": 0.8, "fortified": 1.3, "strengthened": 1.5,
     "solidified": 1.3, "cemented": 1.2, "established": 1.3,
@@ -226,7 +226,7 @@ SENTIMENT_LEXICON: dict[str, float] = {
     "stimulating": 1.5, "provocative": 0.8, "thought-provoking": 1.5,
     "meaningful": 1.8, "significant": 1.3, "important": 1.3,
     "essential": 1.2, "vital": 1.3, "crucial": 1.0,
-    "critical": 0.5, "key": 0.8, "fundamental": 1.0,
+    "fundamental": 1.0,
     "basic": 0.3, "primary": 0.5, "central": 0.5,
     "core": 0.5, "main": 0.3, "major": 0.5,
     "big": 0.5, "large": 0.3, "huge": 0.8,
@@ -234,6 +234,18 @@ SENTIMENT_LEXICON: dict[str, float] = {
     "immense": 0.8, "colossal": 0.8, "gigantic": 0.7,
     "tremendous": 1.5, "substantial": 0.8, "significant": 1.3,
     "considerable": 0.8, "notable": 2.0,
+
+    # === CONTEXT-DEPENDENT (removed from positive to reduce false positives) ===
+    # committed, persistent, interest, raised, extended, key, learned, increased
+    # are too context-dependent — positive in reviews, neutral in formal/technical text
+
+    # === FINANCIAL/FORMAL NEGATIVE ===
+    "fell": -1.5, "sharply": -1.0, "concerns": -1.2,
+    "inflation": -0.5, "restrictive": -1.0, "bearish": -1.5,
+    "plunge": -2.0, "plunged": -2.0, "slump": -1.5, "slumped": -1.5,
+    "tumbled": -1.5, "tanked": -2.0, "plummeted": -2.0,
+    "stagnant": -1.0, "deficit": -1.2,
+    "layoffs": -2.0,
 
     # === SLIGHTLY NEGATIVE (-1.5 - -0.5) ===
     "boring": -1.3, "dull": -1.2, "tedious": -1.3,
@@ -529,7 +541,7 @@ SENTIMENT_LEXICON: dict[str, float] = {
     "glee": 2.5, "amusement": 1.8, "enjoyment": 2.2,
     "excitement": 2.3, "thrill": 2.5, "exhilaration": 2.8,
     "wonder": 2.0, "awe": 2.2, "admiration": 2.3,
-    "fascination": 2.0, "curiosity": 1.5, "interest": 1.3,
+    "fascination": 2.0, "curiosity": 1.5,
     "affection": 2.5, "fondness": 2.3, "tenderness": 2.2,
     "warmth": 2.0, "intimacy": 1.8, "passion": 2.4,
     "desire": 1.5, "longing": -0.5, "yearning": -0.3,
