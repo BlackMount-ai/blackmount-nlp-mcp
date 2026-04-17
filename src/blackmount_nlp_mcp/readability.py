@@ -89,6 +89,10 @@ def _count_complex_words(text: str) -> int:
     return sum(1 for w in actual_words if syllable_count(w) >= 3)
 
 
+def _has_words(text: str) -> bool:
+    return bool(text and text.strip() and re.search(r"[A-Za-z]", text))
+
+
 def flesch_reading_ease(text: str) -> float:
     """Flesch Reading Ease score.
 
@@ -103,6 +107,8 @@ def flesch_reading_ease(text: str) -> float:
     - 30-49: Difficult (college)
     - 0-29: Very confusing (graduate)
     """
+    if not _has_words(text):
+        return 0.0
     num_words, num_sentences, num_syllables, _ = _text_stats(text)
     score = 206.835 - 1.015 * (num_words / num_sentences) - 84.6 * (num_syllables / num_words)
     return round(score, 2)
@@ -113,6 +119,8 @@ def flesch_kincaid_grade(text: str) -> float:
 
     0.39 * (words/sentences) + 11.8 * (syllables/words) - 15.59
     """
+    if not _has_words(text):
+        return 0.0
     num_words, num_sentences, num_syllables, _ = _text_stats(text)
     grade = 0.39 * (num_words / num_sentences) + 11.8 * (num_syllables / num_words) - 15.59
     return round(max(0, grade), 2)
@@ -123,6 +131,8 @@ def gunning_fog(text: str) -> float:
 
     0.4 * ((words/sentences) + 100 * (complex_words/words))
     """
+    if not _has_words(text):
+        return 0.0
     num_words, num_sentences, _, _ = _text_stats(text)
     complex_count = _count_complex_words(text)
     fog = 0.4 * ((num_words / num_sentences) + 100 * (complex_count / num_words))
@@ -135,6 +145,8 @@ def coleman_liau(text: str) -> float:
     0.0588 * L - 0.296 * S - 15.8
     where L = avg letters per 100 words, S = avg sentences per 100 words
     """
+    if not _has_words(text):
+        return 0.0
     num_words, num_sentences, _, num_chars = _text_stats(text)
     l_val = (num_chars / num_words) * 100
     s_val = (num_sentences / num_words) * 100
@@ -147,6 +159,8 @@ def automated_readability(text: str) -> float:
 
     4.71 * (chars/words) + 0.5 * (words/sentences) - 21.43
     """
+    if not _has_words(text):
+        return 0.0
     num_words, num_sentences, _, num_chars = _text_stats(text)
     ari = 4.71 * (num_chars / num_words) + 0.5 * (num_words / num_sentences) - 21.43
     return round(max(0, ari), 2)
@@ -160,6 +174,8 @@ def smog_grade(text: str) -> float:
     Requires at least 30 sentences for accuracy; works with fewer
     but results are approximate.
     """
+    if not _has_words(text):
+        return 0.0
     num_words, num_sentences, _, _ = _text_stats(text)
     complex_count = _count_complex_words(text)
     smog = 1.0430 * math.sqrt(complex_count * (30 / num_sentences)) + 3.1291
@@ -171,6 +187,17 @@ def reading_level(text: str) -> dict[str, str | float]:
 
     Returns grade level and human-readable label.
     """
+    if not _has_words(text):
+        return {
+            "grade_level": 0.0,
+            "label": "N/A",
+            "flesch_reading_ease": 0.0,
+            "flesch_kincaid_grade": 0.0,
+            "gunning_fog": 0.0,
+            "coleman_liau": 0.0,
+            "automated_readability": 0.0,
+            "smog_grade": 0.0,
+        }
     fk_grade = flesch_kincaid_grade(text)
     fre = flesch_reading_ease(text)
 
