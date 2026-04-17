@@ -5,14 +5,14 @@ build-backend = "hatchling.build"
 [project]
 name = "blackmount-nlp-mcp"
 version = "0.1.3"
-description = "Text analysis and NLP MCP server — no NLTK, no spaCy, just results"
+description = "Deterministic local text analysis MCP server — sentiment, readability, keywords, summarization. No NLTK, no spaCy, zero heavy deps."
 readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.10"
 authors = [
     {name = "Mehrdad Shirangi"},
 ]
-keywords = ["mcp", "nlp", "text-analysis", "sentiment", "readability", "tokenization", "keywords", "blackmount", "zero-dependencies"]
+keywords = ["mcp", "mcp-server", "nlp", "text-analysis", "sentiment", "readability", "keyword-extraction", "summarization", "language-detection", "claude-desktop", "cursor-mcp", "local-nlp", "zero-dependencies", "deterministic", "text-scoring"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",

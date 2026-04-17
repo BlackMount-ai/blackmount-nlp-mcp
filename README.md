@@ -4,9 +4,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 
-**NLP for MCP — zero heavy dependencies.** Built by [Blackmount](https://blackmount.ai).
+**Deterministic local text analysis for Claude Desktop, Cursor, and any MCP client.** Built by [Blackmount](https://blackmount.ai).
 
-45 text analysis tools as a FastMCP server. No NLTK. No spaCy. No transformers. One dependency (`mcp[cli]`), under 50 KB of NLP code, ready in seconds. Requires Python 3.10+.
+Sentiment analysis, readability scoring, keyword extraction, text similarity, summarization, and language detection — locally, deterministically, with zero heavy dependencies. No NLTK. No spaCy. No transformers. No API keys. One dependency (`mcp[cli]`), 42 KB wheel, installs in seconds. Python 3.10+.
 
 ---
 
