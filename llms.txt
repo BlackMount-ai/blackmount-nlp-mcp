@@ -1,0 +1,32 @@
+# blackmount-nlp-mcp
+
+> 45 NLP tools as an MCP server. Zero heavy dependencies — no NLTK, no spaCy, no transformers. Pure Python, 42KB wheel. Works with Claude Desktop, Cursor, Cline, and any MCP client.
+
+## Install
+
+pip install blackmount-nlp-mcp
+
+## Configure (Claude Desktop / Cursor)
+
+{"mcpServers":{"nlp":{"command":"blackmount-nlp-mcp"}}}
+
+## Tools (45 total)
+
+- Tokenization: word_tokenize, sentence_tokenize, generate_ngrams, generate_char_ngrams
+- Readability: flesch_reading_ease, flesch_kincaid_grade, gunning_fog_index, coleman_liau_index, automated_readability_index, smog_grade_index, count_syllables, get_reading_level
+- Sentiment: get_sentiment_score, get_sentiment_label, get_sentence_sentiments, get_aspect_sentiment
+- Keywords: extract_tfidf_keywords, extract_rake_keywords, get_word_frequency, get_phrase_frequency
+- Similarity: get_jaccard_similarity, get_cosine_similarity, get_edit_distance, get_normalized_edit_distance, get_longest_common_subsequence
+- Cleaning: clean_remove_stopwords, clean_remove_punctuation, clean_remove_numbers, clean_remove_urls, clean_remove_emails, clean_remove_html, clean_normalize_whitespace, clean_lowercase, porter_stem, clean_text_pipeline
+- Detection: detect_text_language, detect_text_encoding_type, check_is_english, count_words, count_sentences, count_paragraphs, get_avg_word_length, get_avg_sentence_length
+- Summarization: get_extractive_summary, get_text_statistics
+
+## Library Use
+
+from blackmount_nlp_mcp.sentiment import sentiment_score
+from blackmount_nlp_mcp.readability import reading_level
+
+## Source
+
+https://github.com/BlackMount-ai/blackmount-nlp-mcp
+https://pypi.org/project/blackmount-nlp-mcp/

@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "nlp": {
+      "command": "blackmount-nlp-mcp"
+    }
+  }
+}

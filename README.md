@@ -1,12 +1,17 @@
 # blackmount-nlp-mcp
 
+[![Install in Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=blackmount-nlp&config=eyJjb21tYW5kIjoiYmxhY2ttb3VudC1ubHAtbWNwIn0%3D)
+
 [![PyPI version](https://img.shields.io/pypi/v/blackmount-nlp-mcp)](https://pypi.org/project/blackmount-nlp-mcp/)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/blackmount-nlp-mcp)](https://pypi.org/project/blackmount-nlp-mcp/)
+[![Tests](https://github.com/BlackMount-ai/blackmount-nlp-mcp/actions/workflows/test.yml/badge.svg)](https://github.com/BlackMount-ai/blackmount-nlp-mcp/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![Awesome MCP](https://img.shields.io/badge/awesome--mcp--servers-listed-orange)](https://github.com/punkpeye/awesome-mcp-servers)
 
-**NLP for MCP — zero heavy dependencies.** Built by [Blackmount](https://blackmount.ai).
+**Deterministic local text analysis for Claude Desktop, Cursor, Cline, and any MCP client.** Built by [Blackmount](https://blackmount.ai).
 
-45 text analysis tools as a FastMCP server. No NLTK. No spaCy. No transformers. One dependency (`mcp[cli]`), under 50 KB of NLP code, ready in seconds. Requires Python 3.10+.
+45 text analysis tools as a FastMCP server — sentiment, readability, keywords, similarity, summarization, language detection. No NLTK. No spaCy. No transformers. No API keys. One dependency (`mcp[cli]`), 42 KB wheel, installs in seconds. Python 3.10+.
 
 ---
 
@@ -219,6 +224,10 @@ blackmount-nlp-mcp is built by [Blackmount](https://blackmount.ai) — tools for
 **[app.blackmount.ai](https://app.blackmount.ai)** — The full Blackmount platform. Search, organize, and analyze everything your AI tools produce.
 
 ---
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=BlackMount-ai/blackmount-nlp-mcp&type=Date)](https://star-history.com/#BlackMount-ai/blackmount-nlp-mcp&Date)
 
 ## License
 
