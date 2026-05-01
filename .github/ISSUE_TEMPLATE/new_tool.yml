@@ -1,0 +1,23 @@
+name: New Tool Request
+description: Request a new NLP tool
+labels: ["enhancement", "new-tool"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What should this tool do?
+      placeholder: "Detect named entities in text..."
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example input and expected output
+      placeholder: "Input: 'Apple released the iPhone in Cupertino'\nOutput: [{entity: 'Apple', type: 'ORG'}, ...]"
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Constraints check
+      options:
+        - label: Can be implemented with stdlib + regex only (no new heavy dependencies)
+          required: true
